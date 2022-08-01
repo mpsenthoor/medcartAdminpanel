@@ -24,6 +24,9 @@ import { GstAddEditComponent } from './gst-add-edit/gst-add-edit.component';
 import { LoginComponent } from './login/login.component';
 import { OfferListComponent } from './offer-list/offer-list.component';
 import { OfferAddEditComponent } from './offer-add-edit/offer-add-edit.component';
+import { CustomerAddEditComponent } from './customer-add-edit/customer-add-edit.component';
+
+
 
 export const CreatedAdminRouts: Routes = [
     { path: 'login',                component: LoginComponent },
@@ -48,5 +51,6 @@ export const CreatedAdminRouts: Routes = [
     { path: 'gstList',              component: GstListComponent},
     { path: 'gst',                  component: GstAddEditComponent},
     { path: 'offerList',            component: OfferListComponent},
-    { path: 'offer',                component: OfferAddEditComponent}
+    { path: 'offer',                component: OfferAddEditComponent},
+    { path: 'customerList',         component:CustomerAddEditComponent },
 ];
