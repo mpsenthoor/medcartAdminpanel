@@ -1,0 +1,46 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+            <!-- <button class="btn-primary btn" style="float: right;" (click)="rediectPage()">Back to list <i class="pe-7s-back"></i></button> -->
+        </div>
+        <div class="container-fluid">
+            <form [formGroup] = "languageGroup" >
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Language Name</mat-label>
+                                    <input matInput formControlName="languagename"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Language Name"
+                                        [ngClass]="{'is-invalid' : languageFormSubmitted && f.languagename.errors}">
+                                    <mat-error *ngIf="(languageFormSubmitted && f.languagename.errors)">Please provide the Language Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <!-- <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Language Shop</mat-label>
+                                <mat-select
+                                formControlName="languageshop"
+                                [ngClass]="{'is-invalid' : languageFormSubmitted && f.languageshop.errors}" required>
+                                    <mat-option *ngFor="let shop of shopList" [value]="shop.shopid">
+                                    {{shop.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(languageFormSubmitted && f.languageshop.errors)">Please select the shop </mat-error>
+                            </mat-form-field>
+                        </div> -->
+                    </div>
+                <div class="container-fluid">
+                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveLanguage()" style="float: right;color: white;background: green;">Save Language</button>
+                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveLanguage()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Language</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+

@@ -1,0 +1,153 @@
+
+<div class="sidebar-wrapper">
+    <div class="logo">
+        <a href="" class="simple-text">
+            <div class="logo-img">
+                <img src="assets/img/medical-icon.png"/>
+            </div>
+            Medcart Admin
+        </a>
+    </div>
+    <ul class="nav responsive-nav" id="sideNav">
+        <li routerLinkActive="active" class="dashboard" id="dashboard">
+            <a [routerLink]="['/home']">
+                <!-- <i class="fa fa-dashboard"></i> -->
+                <i><mat-icon>dashboard</mat-icon></i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="product productList" id="product">
+            <a [routerLink]="['/productList']">
+                <i class="pe-7s-news-paper"></i>
+                <p>Product Management</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="category categoryList" id="category">
+            <a [routerLink]="['/categoryList']">
+                <i class="pe-7s-plugin"></i>
+                <p>Category Management</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="offer offerList" id="offer">
+            <a [routerLink]="['/offerList']">
+                <i class="pe-7s-gift"></i>
+                <p>Offer Management</p>
+            </a>
+        </li>
+        <!-- <li routerLinkActive="active" class="shop shopList" id="shop">
+            <a [routerLink]="['/shopList']">
+                <i class="pe-7s-box1"></i>
+                <p>Shop Management</p>
+            </a>
+        </li> -->
+        <li routerLinkActive="active" class="language languageList" id="language">
+            <a [routerLink]="['/languageList']">
+                <i class="pe-7s-global"></i>
+                <p>Language Management</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="currency currencyList" id="currency">
+            <a [routerLink]="['/currencyList']">
+                <i class="material-icons">currency_rupee</i>
+                <p>Currency Management</p>
+            </a>
+        </li>
+        <li routerLinkActive="active" class="gst gstList" id="gst">
+            <a [routerLink]="['/gstList']">
+                <i class="material-icons">connect_without_contact</i>
+                <p>GST Management</p>
+            </a>
+        </li>
+        
+        <!-- <hr *ngIf="isMobileMenu()"> -->
+
+        <!-- <li *ngIf="isMobileMenu()">
+            <a mat-button (click)="logOut()" id="logOut">
+                Log out 
+                <i class="pe-7s-power"></i>
+            </a>
+        </li> -->
+
+        <!-- <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['/home']">
+                <i class="fa fa-dashboard"></i>
+				<p class="hidden-lg hidden-md">Dashboard</p>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-toggle" data-toggle="dropdown" [routerLink]="['/ProductList']">
+                <i class="fa fa-list"></i>
+				<p class="hidden-lg hidden-md" >Product Management</p>
+            </a>
+        </li> -->
+        <!-- <li class="dropdown" *ngIf="isMobileMenu()">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-globe"></i>
+                    <b class="caret hidden-sm hidden-xs"></b>
+                    <span class="notification hidden-sm hidden-xs">5</span>
+					<p class="hidden-lg hidden-md">
+						5 Notifications
+						<b class="caret"></b>
+					</p>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Notification 1</a></li>
+                <li><a href="#">Notification 2</a></li>
+                <li><a href="#">Notification 3</a></li>
+                <li><a href="#">Notification 4</a></li>
+                <li><a href="#">Another notification</a></li>
+              </ul>
+        </li> -->
+        <!-- <li *ngIf="isMobileMenu()">
+           <a>
+                <i class="fa fa-search"></i>
+				<p class="hidden-lg hidden-md">Search</p>
+            </a>
+        </li> -->
+        <!-- <li>
+           <a [routerLink]="['/user']">
+               <p>Account</p>
+            </a>
+        </li> -->
+        <!-- <li class="dropdown" *ngIf="isMobileMenu()">
+              <a class="dropdown-toggle" data-toggle="dropdown">
+                    <p>
+    					Dropdown
+    					<b class="caret"></b>
+    				</p>
+
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+              </ul>
+        </li> -->
+        <!-- <li *ngIf="isMobileMenu()" id="logout">
+            <a (click)="logOut()">
+                <i class="pe-7s-power"></i> 
+                <p>Log out</p>
+            </a>
+        </li> -->
+        <!-- <li class="separator hidden-lg hidden-md" *ngIf="isMobileMenu()"></li> -->
+        <!-- <li routerLinkActive="active" *ngFor="let menuItem of menuItems" class="{{menuItem.class}}">
+            <a  [routerLink]="[menuItem.path]">
+                <i class="{{menuItem.icon}}"></i>
+                <p>{{menuItem.title}}</p>
+            </a>
+        </li> -->
+    </ul>
+    <hr *ngIf="isMobileMenu()">
+    <ul class="nav responsive-nav"  *ngIf="isMobileMenu()">
+        <li class="logout" id="logout">
+            <a (click)="logOut()">
+                <i class="pe-7s-power"></i> 
+                <p>Log out</p>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,339 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+        </div>
+        <div class="container-fluid">
+            <h4 class="text-danger text-center" *ngIf="errorMessage">Your data has not saved please contact techical team</h4>
+            <form [formGroup] = "shopGroup" enctype="multipart/form-data">
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Shop Name</mat-label>
+                                    <input matInput
+                                        formControlName="shopname"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Shop Name"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.shopname.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.shopname.touched) && f.shopname.errors)">Please provide the Shop Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Address</mat-label>
+                                    <input matInput
+                                        formControlName="address"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Address"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.address.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.address.touched) && f.address.errors)">Please provide the address</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>City Name</mat-label>
+                                    <input matInput
+                                        formControlName="city"
+                                        type="text"
+                                        required
+                                        placeholder="Enter City"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.city.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.city.touched) && f.city.errors)">Please provide the City</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Pincode</mat-label>
+                                <input matInput
+                                    formControlName="pincode"
+                                    type="text"
+                                    required
+                                    placeholder="Enter Pincode"
+                                    [ngClass]="{'is-invalid' : shopFormSubmitted && f.pincode.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.pincode.touched) && f.pincode.errors)">Please provide the Pincode </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>State</mat-label>
+                                    <input matInput formControlName="state"
+                                        type="text"
+                                        required
+                                        placeholder="Enter State"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.state.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.state.touched) && f.state.errors)">Please provide the Product Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Country</mat-label>
+                                <input matInput
+                                    formControlName="country"
+                                    type="text"
+                                    required
+                                    placeholder="Enter Country"
+                                    [ngClass]="{'is-invalid' : shopFormSubmitted && f.country.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.country.touched) && f.country.errors)">Please provide the Country </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Phone</mat-label>
+                                    <input matInput formControlName="phone"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Phone"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.phone.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.phone.touched) && f.phone.errors)">Please provide the Phone number</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Mobile</mat-label>
+                                <input matInput
+                                    formControlName="mobile"
+                                    type="text"
+                                    required
+                                    placeholder="Enter Mobile"
+                                    [ngClass]="{'is-invalid' : shopFormSubmitted && f.mobile.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.mobile.touched) && f.mobile.errors)">Please provide the Mobile Number</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Fax</mat-label>
+                                    <input matInput formControlName="fax"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Fax"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.fax.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.fax.touched) && f.fax.errors)">Please provide the fax</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Email</mat-label>
+                                <input matInput
+                                    formControlName="emailid"
+                                    type="text"
+                                    required
+                                    placeholder="Enter Email"
+                                    [ngClass]="{'is-invalid' : shopFormSubmitted && f.emailid.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.emailid.touched) && f.emailid.errors?.required)">Please provide the email</mat-error>
+                                    <mat-error *ngIf="((shopFormSubmitted || f.emailid.touched) && f.emailid.errors?.email)">Please provide the Valid email</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Website</mat-label>
+                                    <input matInput formControlName="webid"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Website"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.webid.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.webid.touched) && f.webid.errors)">Please provide the website</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Text Color</mat-label>
+                                        <input matInput formControlName="txtColor"
+                                            type="color"
+                                            required
+                                            placeholder="Enter Text Color"
+                                            [ngClass]="{'is-invalid' : shopFormSubmitted && f.txtColor.errors}">
+                                        <mat-error *ngIf="((shopFormSubmitted || f.txtColor.touched) && f.txtColor.errors)">Please provide the Text color</mat-error>
+                                </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Text Color</mat-label>
+                                    <input matInput formControlName="rportmail"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Text Color"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.txtColor.errors}">
+                                    <mat-error *ngIf="(shopFormSubmitted && f.txtColor.errors)">Please provide the Text color</mat-error>
+                            </mat-form-field> -->
+                            <mat-form-field appearance="fill">
+                                <mat-label>Report Gmail</mat-label>
+                                    <input matInput formControlName="reportmail"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Report Gmail"
+                                        [ngClass]="{'is-invalid' : shopFormSubmitted && f.reportmail.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.reportmail.touched) && f.reportmail.errors?.required)">Please provide the Report Gmail</mat-error>
+                                    <mat-error *ngIf="((shopFormSubmitted || f.reportmail.touched) && f.reportmail.errors?.email)">Please provide the Valid Gmail</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Report Gmail Pass</mat-label>
+                                <input matInput
+                                    formControlName="reportmailpass"
+                                    type="password"
+                                    required
+                                    placeholder="Enter Gmail Password"
+                                    [ngClass]="{'is-invalid' : shopFormSubmitted && f.reportmailpass.errors}">
+                                    <mat-error *ngIf="((shopFormSubmitted || f.reportmailpass.touched) && f.reportmailpass.errors)">Please provide the Report Gmail Password </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Language</mat-label>
+
+                                <!-- <mat-select 
+                                    formControlName="productcategory"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.productcategory.errors}" (change)="setShop()" required >
+                                    <mat-option *ngFor="let Category of categoryList" [value]="Category.category_id">
+                                    {{Category.desc_}}
+                                    </mat-option>
+                                </mat-select> -->
+
+                                <mat-select
+                                formControlName="language"
+                                [ngClass]="{'is-invalid' : shopFormSubmitted && f.language.errors}"
+                                required>
+                                    <mat-option [value]="language.language_id"  *ngFor="let language of languageList">{{language.desc_}}</mat-option>
+                                </mat-select>
+                                    <mat-error *ngIf="((shopFormSubmitted || f.language.touched) && f.language.errors)">Please select language</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency</mat-label>
+                                <mat-select placeholder="Select Currency"
+                                formControlName="currency"
+                                required
+                                [ngClass]="{'is-invalid' : shopFormSubmitted && f.currency.errors}">
+                                    <mat-option [value]="currency.currency_id"  *ngFor="let currency of currencyList">{{currency.symbol+' '+currency.desc_}}</mat-option>
+                                </mat-select>
+                                    <mat-error *ngIf="((shopFormSubmitted || f.currency.touched) && f.currency.errors)">Please select the currency </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                    <textarea matInput
+                                        formControlName="desc"
+                                        type="text"
+                                        placeholder="Give Description"></textarea>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Ext Description</mat-label>
+                                <textarea matInput
+                                    formControlName="extDesc"
+                                    type="text"
+                                    placeholder="Give some external description"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-9 col-md-9">
+                                <mat-form-field>
+                                    <div>
+                                        <mat-toolbar>
+                                            <input matInput readonly name="name" value="Backround Image" class="image-txt"/>
+                                            <button mat-flat-button color="primary">Browse File</button>
+                                        </mat-toolbar>
+                                        <input
+                                            type="file"
+                                            #fileInput
+                                            id="uploadImageFile"
+                                            (change)="readShopImage($event)"
+                                            name="uploadImageFile"
+                                            multiple="multiple"
+                                            accept="image/*"/>
+                                    </div>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <ng-container *ngIf="imageSrc != ''; else imageTemplate">
+                                    <span class="btn" matBadge="X" matBadgeColor="warn"  matBadgeSize="large" (click)="removeLocalImage()">
+                                        <img src="{{imageSrc}}" alt="" srcset="" height="50" width="50">
+                                    </span>
+                                </ng-container>
+                                <ng-template #imageTemplate>
+                                    <span class="btn" matBadge="X" matBadgeColor="warn" matBadgePosition="after" *ngIf="(formType == 'edit' && editImgSrc != '00000000.gif' && editImgSrc != '')" (click)="openDialogRemoveImage()">
+                                        <img src="{{backImagePath+editImgSrc}}" alt="" srcset="" height="50" width="50" *ngIf="(formType == 'edit' && editImgSrc != '00000000.gif' && editImgSrc != '')">
+                                        </span> 
+                                </ng-template>
+                                    
+                                
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-9 col-md-9">
+                                <mat-form-field>
+                                    <div>
+                                        <mat-toolbar>
+                                            <input matInput readonly name="name" value="Logo Image" class="image-txt"/>
+                                            <button mat-flat-button color="primary">Browse File</button>
+                                        </mat-toolbar>
+                                        <input
+                                            type="file"
+                                            #fileInput
+                                            id="uploadLogoFile"
+                                            (change)="readShopLogoImage($event)"
+                                            name="uploadLogoFile"
+                                            multiple="multiple"
+                                            accept="image/*"/>
+                                    </div>
+                              </mat-form-field>
+                            </div>
+                            <div class="col-lg-3 col-md-3">
+                                <ng-container *ngIf="logoImageSrc != ''; else logoTemplate">
+                                    <span class="btn" matBadge="X" matBadgeColor="warn"  matBadgeSize="large" (click)="removeLocalLogo()">
+                                        <img src="{{logoImageSrc}}" alt="" srcset="" height="50" width="50">
+                                    </span>
+                                </ng-container>
+                                <ng-template #logoTemplate>
+                                    <!-- <span class="btn" matBadge="X" matBadgeColor="warn" matBadgePosition="after" *ngIf="(formType == 'edit' && editLogoSrc != '00000000.gif')" (click)="removeSavedLogoImage()"> -->
+                                        <span class="btn" matBadge="X" matBadgeColor="warn" matBadgePosition="after" *ngIf="(formType == 'edit' && editLogoSrc != '00000000.gif')" (click)="openDialogRemoveLogo()">
+                                        <img src="{{logoImagePath+editLogoSrc}}" alt="" srcset="" height="50" width="50" *ngIf="(formType == 'edit' && editLogoSrc != '00000000.gif')">
+                                        </span> 
+                                </ng-template>
+                            </div>
+                        </div>
+                    </div>
+                <div class="container-fluid">
+                    <button *ngIf="(formType == 'new' || formType == '')" mat-raised-button (click)="saveShop()" style="float: right;color: white;background: green;">Save Shop</button>
+                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveShop()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Shop</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+
