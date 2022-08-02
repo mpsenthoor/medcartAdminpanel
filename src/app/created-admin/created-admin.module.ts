@@ -58,7 +58,8 @@ import { CustomerAddEditComponent } from './customer-add-edit/customer-add-edit.
     MaterialDesignForCreatedAdminModule,
     FormsModule,
     ReactiveFormsModule,
-    CKEditorModule
+    CKEditorModule,
+   
   ],
   // exports:[
   //   ProductListComponent,

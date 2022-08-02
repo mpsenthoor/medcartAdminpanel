@@ -30,6 +30,9 @@ import { AppComponent } from './app.component';
 
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { CustomerAddEditComponent } from './created-admin/customer-add-edit/customer-add-edit.component';
 
 // Editer Module
 
@@ -55,10 +58,13 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     AppRoutingModule,
     NgbModule,
     // CKEditorModule
+    MatDialogModule,
+    MatFormFieldModule
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
+  
     
     // CreatedAdminModule
     // DeleteConfirmationMessageComponent,

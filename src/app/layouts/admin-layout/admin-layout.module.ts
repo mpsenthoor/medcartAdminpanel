@@ -28,6 +28,8 @@ import { UpgradeComponent } from '../../upgrade/upgrade.component';
 import { CreatedAdminModule } from "../../created-admin/created-admin.module";
 import { MatDividerModule } from '@angular/material/divider';
 
+
+
 // material 
 // import { MatRippleModule } from '@angular/material/core';
 // import { MatButtonModule } from "@angular/material/button";
@@ -56,8 +58,8 @@ import { MatDividerModule } from '@angular/material/divider';
     LbdModule,
     NguiMapModule.forRoot({apiUrl: 'https://maps.google.com/maps/api/js?key=YOUR_KEY_HERE'}),
     CreatedAdminModule,
-    MatDividerModule
-    // Material module
+    MatDividerModule,
+    
     // MatButtonModule,
     // MatTooltipModule,
     // MatFormFieldModule,
@@ -81,6 +83,7 @@ import { MatDividerModule } from '@angular/material/divider';
     MapsComponent,
     NotificationsComponent,
     UpgradeComponent,
+    
     // ProductListComponent,
     // ProductAddEditComponent,
     // DeleteConfirmationMessageComponent

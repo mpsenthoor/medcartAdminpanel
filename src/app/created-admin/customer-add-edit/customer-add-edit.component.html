@@ -1,1 +1,38 @@
 <p>customer-add-edit works!</p>
+
+<div class="container-fluid" style="min-height: 650px;">
+    <div class="container-fluid">
+        <!-- <a (click)="changeToAddEditPage('new','')" class="btn btn-primary" style="float: right;margin-bottom: 25px;">Add Product</a> -->
+        <button mat-raised-button color="primary" style="float: right;">Back to list 
+            <i class="material-icons">reply_all</i>
+        </button>
+    </div>
+  
+<ng-container>
+    <div class="customer-container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input matInput formControl="email"
+          type="text"
+          placeholder="Customer name.." 
+          
+          required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field> 
+      </div>
+      </div></div>
+</ng-container>
+<!-- <div class="row">
+    <div class="col-lg-6 col-md-6">
+        <mat-form-field appearance="fill">
+            <mat-label>Customer Name</mat-label>
+                <input matInput formControlName="customername"
+                    type="text"
+                    required
+                    placeholder="Enter Customer Name"
+                    [ngClass]="">
+                <mat-error *ngIf="">Please provide the Product Name</mat-error>
+        </mat-form-field>
+    </div> -->
