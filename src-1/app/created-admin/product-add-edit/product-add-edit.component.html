@@ -1,0 +1,278 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+            <!-- <button class="btn-primary btn" style="float: right;" (click)="rediectPage()">Back to list <i class="pe-7s-back"></i></button> -->
+        </div>
+        <div class="container-fluid">
+            <form [formGroup] = "productGroup" >
+                <!-- <form action=""> -->
+                    <!-- <mat-form-field class="example-form-field" appearance="fill">
+                        <mat-label>Clearable input</mat-label>
+                        <input matInput type="text" [(ngModel)]="">
+                        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </mat-form-field> -->
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Product Name</mat-label>
+                                    <input matInput formControlName="productname"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Product Name"
+                                        [ngClass]="{'is-invalid' : productFormSubmitted && f.productname.errors}">
+                                    <mat-error *ngIf="(productFormSubmitted && f.productname.errors)">Please provide the Product Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Product Price</mat-label>
+                                <input matInput
+                                    formControlName="productprice"
+                                    type="text"
+                                    required
+                                    placeholder="Enter Product Name"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.productprice.errors}">
+                                    <mat-error *ngIf="(productFormSubmitted && f.productprice.errors)">Please provide the Product Price </mat-error>
+                                <!-- <p class="text-danger small" *ngIf="(productFormSubmitted && f.productprice.errors)">Please provide the Product Price</p> -->
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose start date</mat-label>
+                                <input matInput
+                                [matDatepicker]="picker"
+                                formControlName="startDate"
+                                [ngClass]="{'is-invalid' : productFormSubmitted && f.startDate.errors}">
+                                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                                <mat-error *ngIf="(productFormSubmitted && f.startDate.errors)">Please provide the Start Date</mat-error>
+                            </mat-form-field>
+                              
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Product Start Date</mat-label>
+                                <input matInput
+                                    formControlName="startDate"
+                                    type="date"
+                                    required
+                                    placeholder="Enter Start Date"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.startDate.errors}">
+                                    <mat-error *ngIf="(productFormSubmitted && f.startDate.errors)">Please provide the Start Date</mat-error>
+                            </mat-form-field> -->
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Choose end date</mat-label>
+                                <input matInput
+                                [matDatepicker]="picker1"
+                                formControlName="endDate"
+                                [ngClass]="{'is-invalid' : productFormSubmitted && f.endDate.errors}">
+                                <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <mat-datepicker #picker1></mat-datepicker>
+                                <mat-error *ngIf="(productFormSubmitted && f.endDate.errors)">Please provide the End Date</mat-error>
+                            </mat-form-field>
+
+                            <!-- <mat-form-field appearance="fill">
+                                <mat-label>Product End Date</mat-label>
+                                <input matInput
+                                    formControlName="endDate"
+                                    type="date"
+                                    required
+                                    placeholder="Enter End Date"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.endDate.errors}">
+                                    <mat-error *ngIf="(productFormSubmitted && f.endDate.errors)">Please provide the End Date</mat-error>
+                            </mat-form-field> -->
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Product Category</mat-label>
+                                <mat-select 
+                                    formControlName="productcategory"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.productcategory.errors}" (change)="setShop()" required >
+                                    <mat-option *ngFor="let Category of categoryList" [value]="Category.category_id">
+                                    {{Category.desc_}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(productFormSubmitted && f.productcategory.errors)">Please provide the Category</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <!-- <mat-form-field appearance="fill">
+                                    <input matInput 
+                                        #UploadFileInput
+                                        accept="image/*"
+                                        formControlName="productimage"
+                                        type="file"
+                                        placeholder="Select Image"
+                                        (change)="readProductImage($event)" 
+                                        [ngClass]="{'is-invalid' : productFormSubmitted && f.productimage.errors}">
+                                    <mat-error *ngIf="(productFormSubmitted && f.productimage.errors)">Please provide the Product Image</mat-error>
+                                    <mat-hint>Please Select Image</mat-hint>
+                                </mat-form-field> -->
+                                <div class="col-lg-9 col-md-9">
+                                    <mat-form-field>
+                                        <div>
+                                            <mat-toolbar>
+                                                <!-- Display files names -->
+                                                <input matInput readonly name="name" />
+                                                <!-- Browse Button -->
+                                                <button mat-flat-button color="primary">Browse File</button>
+                                            </mat-toolbar>
+                                            <!-- Fetch selected filed on change -->
+                                            <input
+                                                type="file"
+                                                #fileInput
+                                                id="uploadFile"
+                                                (change)="readProductImage($event)"
+                                                name="uploadFile"
+                                                multiple="multiple"
+                                                accept="image/*"/>
+                                        </div>
+                                  </mat-form-field>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <!-- <img src="{{imageSrc}}" alt="" srcset="" height="75" width="75" *ngIf="(imageSrc)">
+                                    <img src="{{imagePath+editImgSrc}}" alt="{{noImage}}" srcset="" height="75" width="75" *ngIf="(formType == 'edit' && !imageSrc)"> -->
+                                    <span class="btn" matBadge="X" matBadgeColor="warn"  matBadgeSize="large" *ngIf="(imageSrc)" (click)="removeLocalImage()">
+                                        <img src="{{imageSrc}}" alt="" srcset="" height="50" width="50" *ngIf="(imageSrc)">
+                                    </span>
+                                    <!-- <span class="btn" matBadge="X" matBadgeColor="warn" matBadgePosition="after" *ngIf="(formType == 'edit' && editImgSrc != '00000000.gif' && editImgSrc != '' && !imageSrc)" (click)="removeSavedImage()"> -->
+                                    <span class="btn" matBadge="X" matBadgeColor="warn" matBadgePosition="after" *ngIf="(formType == 'edit' && editImgSrc != '00000000.gif' && editImgSrc != '' && !imageSrc)" (click)="openDialog()">
+                                        <img src="{{imagePath+editImgSrc}}" alt="" srcset="" height="50" width="50" *ngIf="(formType == 'edit' && editImgSrc != '00000000.gif' && editImgSrc != '' && !imageSrc)">
+                                    </span> 
+                                </div>
+                            </div>
+                        <!-- <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Product Shop</mat-label>
+                                <mat-select disabled
+                                formControlName="productshop">
+                                    <mat-option *ngFor="let shop of shopList" [value]="shop.shopid">
+                                    {{shop.name}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div> -->
+                    </div> 
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput
+                                    formControlName="desc"
+                                    type="date"
+                                    placeholder="Enter Description"
+                                    [ngClass]="{'is-invalid' : productFormSubmitted && f.desc.errors}">
+                                </textarea>
+                            </mat-form-field>
+                        </div>
+                        
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid">
+                            <!-- <mat-form-field appearance="fill"> -->
+                                <mat-label>About</mat-label>
+                                <app-ck-editer [editorValue] = "editorValue" (setCkEditorValue) = "setCkEditorValue($event)"></app-ck-editer>
+                            <!-- </mat-form-field> -->
+                        </div>
+                    </div>
+                    <!-- <mat-form-field appearance="fill">
+                        <mat-label>Product Name</mat-label>
+                        <input matInput
+                            formControlName="productname"
+                            type="text"
+                            required
+                            placeholder="Enter Product Name"
+                            [ngClass]="{'is-invalid' : productFormSubmitted && f.productname.errors}"
+                        >
+                        <p class="text-danger small" *ngIf="(productFormSubmitted && f.productname.errors)">Please provide the Product Name</p>
+                    </mat-form-field> -->
+                    <!-- <div class="form-group">
+                        <label for="">Product Name</label> 
+                        <input type="text" placeholder="Enter Product Name" class="form-control form-control-border" formControlName="productname" [ngClass]="{'is-invalid' : productFormSubmitted && f.productname.errors}">
+                        <p class="text-danger small" *ngIf="(productFormSubmitted && f.productname.errors)">Please provide the Product Name</p>
+                    </div> -->
+                <!-- <div class="form-group">
+                    <div class="row">
+                        <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
+                            <label for="">Product Image</label>
+                            <input type="file" class="form-control form-control-border" (change)="readProductImage($event)" formControlName="productimage" [ngClass]="{'is-invalid' : productFormSubmitted && f.productimage.errors}">
+                            <p class="text-danger small" *ngIf="(productFormSubmitted && f.productimage.errors)">Please provide the Product Image</p>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                            <img src="{{imageSrc}}" alt="" srcset="" height="75" width="75" *ngIf="(imageSrc)">
+                            <img src="{{imagePath+editImgSrc}}" alt="{{noImage}}" srcset="" height="75" width="75" *ngIf="(formType == 'edit' && !imageSrc)">
+                        </div>
+                    </div>
+                </div> -->
+                <!-- <div class="form-group">
+                    <label for="">Product Category</label>
+                    <select name="" id="" class="form-control form-control-border"  formControlName="productcategory" *ngFor="let category of categoryList" [ngClass]="{'is-invalid' : productFormSubmitted && f.productcategory.errors}" (change)="setShop()">
+                        <option value="" selected>Select Category</option>
+                        <option value="{{category.category_id}}">{{category.desc_}}</option>
+                    </select>
+                    <p class="text-danger small" *ngIf="(productFormSubmitted && f.productcategory.errors)">Please select the Category</p>
+                </div> -->
+                
+                <!-- <div class="form-group">
+                    <label for="">Product Price</label>
+                    <input type="double" placeholder="Enter Product Price" class="form-control form-control-border" formControlName="productprice" [ngClass]="{'is-invalid' : productFormSubmitted && f.productprice.errors}">
+                    <p class="text-danger small" *ngIf="(productFormSubmitted && f.productprice.errors)">Please provide the Product Price</p>
+                </div> -->
+                <!-- <mat-form-field appearance="fill">
+                    <mat-label>Product Category</mat-label>
+                    <mat-select *ngFor="let category of categoryList" [ngClass]="{'is-invalid' : productFormSubmitted && f.productcategory.errors}" (change)="setShop()">
+                        <mat-option value="{{category.category_id}}">{{category.desc_}}</mat-option>
+                    </mat-select>
+                </mat-form-field> -->
+                <!-- <div class="form-group">
+                    <label for="">Product Shop</label>
+                    <select name="" id="" disabled="disabled" class="form-control form-control-border"  formControlName="productshop" *ngFor="let shop of shopList">
+                        <option value="{{shop.shopid}}">{{shop.name}}</option>
+                    </select>
+                </div> -->
+                
+                
+                <!-- <div class="form-group">
+                    <label for="">Product Start Date</label>
+                    <input type="date" class="form-control form-control-border" formControlName="startDate" [ngClass]="{'is-invalid' : productFormSubmitted && f.startDate.errors}">
+                    <p class="text-danger small" *ngIf="(productFormSubmitted && f.startDate.errors)">Please provide the Start Date</p>
+                </div> -->
+                <!-- <mat-form-field>
+                    <input matInput [matDatepicker]="picker" placeholder="title">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <button matSuffix [matDatepickerToggle]="picker"></button>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field> -->
+                
+                <!-- <div class="form-group">
+                    <label for="">Product End Date</label>
+                    <input type="date" class="form-control form-control-border" formControlName="endDate" [ngClass]="{'is-invalid' : productFormSubmitted && f.endDate.errors}">
+                    <p class="text-danger small" *ngIf="(productFormSubmitted && f.endDate.errors)">Please provide the End Date</p>
+                </div> -->
+                
+                <!-- <div class="form-group">
+                    <label for="">Description</label>
+                    <textarea name="" id="" cols="5" rows="5" class="form-control" formControlName="desc" placeholder="About product"></textarea>
+                </div> -->
+                <div class="container-fluid">
+                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveProduct()" style="float: right;color: white;background: green;">Save Product</button>
+                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveProduct()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+

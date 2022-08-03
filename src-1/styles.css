@@ -1,0 +1,22 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~../node_modules/bootstrap/dist/css/bootstrap.min.css"; */
+/* @import "~assets/css/bootstrap.min.css"; */
+/* @import "~bootstrap/dist/css/bootstrap.css"; */
+/* @import "~assets/css/animate.css";
+@import "~assets/css/fontawesom.css";
+@import "~assets/css/fontawesom-roboto.css";
+@import "~assets/css/roboto-wght.css";
+@import "~assets/css/pe-icon-7-stroke.css"; */
+/* @import "~assets/css/material-icons.css"; */
+
+.cursor:hover{
+    cursor: pointer;
+  }
+
+.form-control-border{
+  border: 1px solid #c5b8b8 !important;
+}
+
+#logOut:hover{
+  cursor: pointer;
+}

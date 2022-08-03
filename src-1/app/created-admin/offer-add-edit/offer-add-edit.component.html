@@ -1,0 +1,99 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+            <!-- <button class="btn-primary btn" style="float: right;" (click)="rediectPage()">Back to list <i class="pe-7s-back"></i></button> -->
+        </div>
+        <div class="container-fluid">
+            <form [formGroup] = "offerGroup" >
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Offer Name</mat-label>
+                                    <input matInput formControlName="offername"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Offer Name"
+                                        [ngClass]="{'is-invalid' : offerFormSubmitted && f.offername.errors}">
+                                    <mat-error *ngIf="(offerFormSubmitted && f.offername.errors)">Please provide the Offer Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Offer Product</mat-label>
+                                <mat-select
+                                formControlName="offerproduct"
+                                [ngClass]="{'is-invalid' : offerFormSubmitted && f.offerproduct.errors}" required>
+                                    <mat-option *ngFor="let product of productList" [value]="product.product_id">
+                                    {{product.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(offerFormSubmitted && f.offerproduct.errors)">Please select the shop </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Offer Type</mat-label>
+                                <mat-select
+                                formControlName="offertype"
+                                (selectionChange)="setOfferType($event)"
+                                [ngClass]="{'is-invalid' : offerFormSubmitted && f.offertype.errors}" required>
+                                    <mat-option *ngFor="let typ of typeList" [value]="typ.id">
+                                    {{typ.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(offerFormSubmitted && f.offertype.errors)">Please select Offer Type </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill" *ngIf="(offerTypEnbl == 1)">
+                                <mat-label>Offer Percentage</mat-label>
+                                    <input matInput formControlName="offerpercentage" 
+                                        [id]="percentage"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Offer Name"
+                                        [ngClass]="{'is-invalid' : offerFormSubmitted && offerTypEnbl == 1 && f.offerpercentage.value == ''}">
+                                    <mat-error *ngIf="(offerFormSubmitted && offerTypEnbl == 1 && f.offerpercentage.value == '')">Please provide the Offer percentage</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" *ngIf="(offerTypEnbl == 2)">
+                                <mat-label>Offer Fixed Discount</mat-label>
+                                    <input matInput formControlName="offerfixeddiscount"
+                                        [id]="fixed"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Offer Name"
+                                        [ngClass]="{'is-invalid' : offerFormSubmitted && offerTypEnbl == 2 && f.offerfixeddiscount.value == ''}">
+                                    <mat-error *ngIf="(offerFormSubmitted && offerTypEnbl == 2 && f.offerfixeddiscount.value == '')">Please provide the Offer discount</mat-error>
+                            </mat-form-field>
+                            <mat-form-field appearance="fill" *ngIf="(offerTypEnbl == 3)">
+                                <mat-label>Offer Maximum Free Quantity</mat-label>
+                                    <input matInput formControlName="offerfreequantity"
+                                        [id]="qty"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Offer Name"
+                                        [ngClass]="{'is-invalid' : offerFormSubmitted && offerTypEnbl == 3 && f.offerfreequantity.value == ''}">
+                                    <mat-error *ngIf="(offerFormSubmitted && offerTypEnbl == 3 && f.offerfreequantity.value == '')">Please provide the Offer quantity</mat-error>
+                            </mat-form-field>
+                            
+                        </div>
+                    </div>
+                <div class="container-fluid">
+                    <ng-container *ngIf="formType == 'edit'; else addTemplate">
+                        <button mat-raised-button (click)="saveOffer()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Offer</button>
+                    </ng-container>
+                    <ng-template #addTemplate>
+                        <button mat-raised-button (click)="saveOffer()" style="float: right;color: white;background: green;">Save Offer</button>
+                    </ng-template>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+

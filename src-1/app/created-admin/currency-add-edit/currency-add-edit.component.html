@@ -1,0 +1,59 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+            <!-- <button class="btn-primary btn" style="float: right;" (click)="rediectPage()">Back to list <i class="pe-7s-back"></i></button> -->
+        </div>
+        <div class="container-fluid">
+            <form [formGroup] = "currencyGroup" >
+                      <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency Name</mat-label>
+                                    <input matInput formControlName="currencyname"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Currency Name"
+                                        [ngClass]="{'is-invalid' : currencyFormSubmitted && f.currencyname.errors}">
+                                    <mat-error *ngIf="(currencyFormSubmitted && f.currencyname.errors)">Please provide the Currency Name</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency Symbol</mat-label>
+                                    <input matInput formControlName="currencysymbol"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Currency Symbol"
+                                        [ngClass]="{'is-invalid' : currencyFormSubmitted && f.currencysymbol.errors}">
+                                    <mat-error *ngIf="(currencyFormSubmitted && f.currencysymbol.errors)">Please provide the Currency Symbol</mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency Shop</mat-label>
+                                <mat-select
+                                formControlName="currencyshop"
+                                [ngClass]="{'is-invalid' : currencyFormSubmitted && f.currencyshop.errors}" required>
+                                    <mat-option *ngFor="let shop of shopList" [value]="shop.shopid">
+                                    {{shop.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(currencyFormSubmitted && f.currencyshop.errors)">Please select the shop </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div> -->
+                <div class="container-fluid">
+                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: green;">Save Currency</button>
+                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Currency</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+
