@@ -72,4 +72,5 @@ export const ROUTES: RouteInfo[] = [
     { path: '/gst', title: 'GST Add/Edit',  icon:'pe-7s-bell', class: '' },
     { path: '/offerList', title: 'Offer List',  icon:'pe-7s-global', class: '' },
     { path: '/offer', title: 'Offer Add/Edit',  icon:'pe-7s-bell', class: '' },
+    { path: '/customerList', title:'customer Add/Edit', icon:'pe-7s-users', class: '' },
 ];
