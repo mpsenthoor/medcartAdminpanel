@@ -1,0 +1,69 @@
+<ng-container>
+    <div class="container-fluid" style="min-height: 650px;">
+        <div class="container-fluid">
+            <button mat-button (click)="rediectPage()" color="primary" style="float:right">Back to list 
+                <i class="material-icons">reply</i>
+            </button>
+            <!-- <button class="btn-primary btn" style="float: right;" (click)="rediectPage()">Back to list <i class="pe-7s-back"></i></button> -->
+        </div>
+        <div class="container-fluid">
+            <form [formGroup] = "gstGroup" >
+                    <div class="row">
+                        <!-- <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Shop</mat-label>
+                                <mat-select
+                                formControlName="shopId"
+                                [ngClass]="{'is-invalid' : gstFormSubmitted && f.shopId.errors}" required>
+                                    <mat-option *ngFor="let shop of shopList" [value]="shop.shopid">
+                                    {{shop.name}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(gstFormSubmitted && f.shopId.errors)">Please select the shop </mat-error>
+                            </mat-form-field>
+                        </div> -->
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Gst Amount</mat-label>
+                                    <input matInput formControlName="gstamount"
+                                        type="text"
+                                        required
+                                        placeholder="Enter Gst Name"
+                                        [ngClass]="{'is-invalid' : gstFormSubmitted && f.gstamount.errors}">
+                                    <mat-error *ngIf="(gstFormSubmitted && f.gstamount.errors)">Please provide the Gst Amount</mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Currency</mat-label>
+                                <mat-select
+                                formControlName="currencyId"
+                                [ngClass]="{'is-invalid' : gstFormSubmitted && f.currencyId.errors}" required>
+                                    <mat-option *ngFor="let currency of currencyList" [value]="currency.currency_id">
+                                    {{currency.symbol+' '+currency.desc_}}
+                                    </mat-option>
+                                </mat-select>
+                                <mat-error *ngIf="(gstFormSubmitted && f.currencyId.errors)">Please select the currency </mat-error>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <mat-form-field appearance="fill">
+                                <mat-label>Description</mat-label>
+                                    <textarea matInput formControlName="gstdesc"
+                                        type="text"
+                                        placeholder="Give some detail"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                <div class="container-fluid">
+                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveGst()" style="float: right;color: white;background: green;">Save Gst</button>
+                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveGst()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Gst</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</ng-container>
+

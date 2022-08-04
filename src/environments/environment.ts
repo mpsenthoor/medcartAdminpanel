@@ -18,6 +18,7 @@ export const environment = {
   shopImageLogoPath : "http://localhost/medcart/images/shop/logo/",
   shopBackImagePath : "http://localhost/medcart/images/shop/backimage/",
   offerImagePath : "http://localhost/medcart/images/offer/",
+  customerImagePath : "http://localhost/medcart/images/customer/",
   
 };
 

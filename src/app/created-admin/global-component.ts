@@ -26,6 +26,7 @@ export class GlobalComponent {
     // public static shopImageLogoPath : String = environment.shopImageLogoPath;
     // public static shopBackImagePath : String = environment.shopBackImagePath;
     // public static offerImagePath : String = environment.offerImagePath;
+    // public static customerImagePath : String = environment.customerImagePath;
 
     public static offerTypeList : any = [
       {"id":1,"name":"Percentage %"},
@@ -45,6 +46,7 @@ export class GlobalComponent {
     public static shopImageLogoPath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/logo/";
     public static shopBackImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/backimage/";
     public static offerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/offer/";
+    public static customerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/customer/";
 
 }
 
@@ -72,6 +74,6 @@ export const ROUTES: RouteInfo[] = [
     { path: '/gst', title: 'GST Add/Edit',  icon:'pe-7s-bell', class: '' },
     { path: '/offerList', title: 'Offer List',  icon:'pe-7s-global', class: '' },
     { path: '/offer', title: 'Offer Add/Edit',  icon:'pe-7s-bell', class: '' },
-    { path: '/customerList', title:'Customer List', icon:'pe-7s-users', class: '' },
-    { path: '/customer', title:'Customer List', icon:'pe-7s-users', class: '' },
+    { path: '/customerList', title: 'Customer List',  icon:'pe-7s-global', class: '' },
+    { path: '/customer', title: 'Customer Add/Edit',  icon:'pe-7s-bell', class: '' },
 ];

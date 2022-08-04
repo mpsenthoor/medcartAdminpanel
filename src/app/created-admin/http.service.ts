@@ -46,6 +46,10 @@ export class HttpService {
     return this.getUrl("login.php");
   }
 
+  getCustomerUrl(){
+    return this.getUrl("customer.php");
+  }
+
     // Offer API Start
 
     connectToOfferApi(data : FormData){
@@ -111,5 +115,13 @@ export class HttpService {
     }
 
   // Login API End
+
+    // Customer API Start
+
+    connectToCustomerApi(data : FormData){
+      return this.http.post(this.getCustomerUrl(),data);
+    }
+
+  // Customer API End
 
 }

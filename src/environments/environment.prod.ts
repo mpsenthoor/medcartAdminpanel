@@ -13,5 +13,6 @@ export const environment = {
     shopImageLogoPath : "https://geservetechnology.com/ref/medcart/api/images/shop/logo/",
     shopBackImagePath : "https://geservetechnology.com/ref/medcart/api/images/shop/backimage/",
     offerImagePath : "https://geservetechnology.com/ref//medcart/api/images/offer/",
+    customerImagePath : "https://geservetechnology.com/ref//medcart/api/images/customer/",
     
 };

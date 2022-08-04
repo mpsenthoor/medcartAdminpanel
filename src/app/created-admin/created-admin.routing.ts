@@ -27,8 +27,6 @@ import { OfferAddEditComponent } from './offer-add-edit/offer-add-edit.component
 import { CustomerListComponent } from './customer-list/customer-list.component';
 import { CustomerAddEditComponent } from './customer-add-edit/customer-add-edit.component';
 
-
-
 export const CreatedAdminRouts: Routes = [
     { path: 'login',                component: LoginComponent },
     { path: 'dashboard',            component: HomeComponent },
@@ -55,4 +53,6 @@ export const CreatedAdminRouts: Routes = [
     { path: 'offer',                component: OfferAddEditComponent},
     { path: 'customerList',         component: CustomerListComponent },
     { path: 'customer',             component: CustomerAddEditComponent },
+
+
 ];
