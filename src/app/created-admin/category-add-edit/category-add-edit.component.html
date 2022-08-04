@@ -87,12 +87,11 @@
                                 <mat-label>Choose start date</mat-label>
                                 <input matInput
                                 [matDatepicker]="picker"
-                                formControlName="startDate"
-                                [ngClass]="{'is-invalid' : categoryFormSubmitted && f.startDate.errors}">
+                                formControlName="startDate">
                                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                                 <mat-datepicker #picker></mat-datepicker>
-                                <mat-error *ngIf="(categoryFormSubmitted && f.startDate.errors)">Please provide the Start Date</mat-error>
+                                <!-- <mat-error *ngIf="(categoryFormSubmitted && f.startDate.errors)">Please provide the Start Date</mat-error> -->
                             </mat-form-field>
                         </div>
                         <div class="col-lg-6 col-md-6">
@@ -100,12 +99,11 @@
                                 <mat-label>Choose end date</mat-label>
                                 <input matInput
                                 [matDatepicker]="picker1"
-                                formControlName="endDate"
-                                [ngClass]="{'is-invalid' : categoryFormSubmitted && f.endDate.errors}">
+                                formControlName="endDate">
                                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
                                 <mat-datepicker #picker1></mat-datepicker>
-                                <mat-error *ngIf="(categoryFormSubmitted && f.endDate.errors)">Please provide the End Date</mat-error>
+                                <!-- <mat-error *ngIf="(categoryFormSubmitted && f.endDate.errors)">Please provide the End Date</mat-error> -->
                             </mat-form-field>
                         </div>
                     </div>
@@ -149,8 +147,12 @@
                         
                     </div>
                 <div class="container-fluid">
-                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveCategory()" style="float: right;color: white;background: green;">Save Category</button>
-                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveCategory()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Category</button>
+                    <ng-container *ngIf="formType == 'edit'; else newBtn">
+                        <button mat-raised-button (click)="saveCategory()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Category</button>
+                    </ng-container>
+                    <ng-template #newBtn>
+                        <button mat-raised-button (click)="saveCategory()" style="float: right;color: white;background: green;">Save Category</button>
+                    </ng-template>
                 </div>
             </form>
         </div>

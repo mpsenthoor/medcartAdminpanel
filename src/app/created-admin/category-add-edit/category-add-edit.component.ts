@@ -7,6 +7,8 @@ import { GlobalComponent } from "../global-component";
 import {formatDate} from '@angular/common';
 import { DateAdapter } from '@angular/material/core';
 import { CommonService } from '../common.service';
+import { DeleteConfirmationMessageComponent } from '../delete-confirmation-message/delete-confirmation-message.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-category-add-edit',
@@ -20,7 +22,7 @@ export class CategoryAddEditComponent implements OnInit {
     private fb : FormBuilder,
     private http : HttpService,
     private dateAdapter: DateAdapter<Date>,
-    // public dialog : MatDialog,,
+    public dialog : MatDialog,
     private common : CommonService
     ) {
       this.dateAdapter.setLocale('en-GB');
@@ -50,6 +52,8 @@ export class CategoryAddEditComponent implements OnInit {
 
     shop : any = GlobalComponent.shop;
 
+    deleteConfirmation : boolean;
+
   ngOnInit(): void {
     this.common.validUser();
     this.common.setActiveManagement("category");
@@ -70,12 +74,23 @@ export class CategoryAddEditComponent implements OnInit {
     this.http.connectToCategoryApi(formData).subscribe((resp : any) => {
       // console.log(resp);
       this.editImgSrc = resp.image_url;
+      if(resp.start_date != "0000-00-00"){
+          this.categoryGroup.patchValue({
+            startDate : resp.start_date
+          })
+      }
+      if(resp.end_date != "0000-00-00"){
+        this.categoryGroup.patchValue({
+          endDate : resp.end_date
+        })
+      }
       this.categoryGroup.patchValue({
         categoryname : resp.desc_,
         // categoryimage : resp.image_url ,
         categoryshop : resp.shop_id,
-        startDate : resp.start_date,
-        endDate : resp.end_date,
+        
+        // startDate : resp.start_date,
+        // endDate : resp.end_date,
       });
     })
   }
@@ -128,8 +143,23 @@ export class CategoryAddEditComponent implements OnInit {
     this.imageSrc = '';
   }
 
+  openDialog() : void{
+    const dialogRef = this.dialog.open(DeleteConfirmationMessageComponent, {
+      width: '250px',
+      data: {delete : true,no : false,message: "Are you sure want to remove this Category Image?"},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.deleteConfirmation = result;
+      if(result){
+        this.removeSavedImage();
+      }
+    });
+  }
+
   removeSavedImage(){
-    if(confirm("Are you sure remove this category image?")){
+    // if(confirm("Are you sure remove this category image?")){
       var formData = new FormData();
           formData.append("action","removeImage");
           formData.append("category",this.editId);
@@ -140,13 +170,13 @@ export class CategoryAddEditComponent implements OnInit {
             this.editImgSrc = '';
           }
       });
-    }
+    // }
   }
 
   saveCategory(){
     this.categoryFormSubmitted = true;
     var formData = new FormData();
-    // console.log(this.categoryGroup.value);
+    // console.log(this.categoryGroup);
     if(this.categoryGroup.valid){
       if(this.formType == 'edit'){
         formData.append("action","updateCategory");
@@ -164,7 +194,7 @@ export class CategoryAddEditComponent implements OnInit {
       // formData.append("desc",this.f.desc.value);
 
       this.http.connectToCategoryApi(formData).subscribe((resp : any) => {
-        console.log(resp);
+        // console.log(resp);
         if(resp == '1'){
             this.router.navigate(['categoryList']);
         }
