@@ -115,14 +115,25 @@ export class ProductAddEditComponent implements OnInit {
         this.editImgSrc = resp.image_url;
         this.editorValue = resp.about;
         // console.log(this.editorValue);
+        if(resp.startdate != "0000-00-00"){
+          this.productGroup.patchValue({
+            startDate : resp.startdate
+          })
+        }
+        if(resp.enddate != "0000-00-00"){
+          this.productGroup.patchValue({
+            endDate : resp.enddate
+          })
+        }
+
         this.productGroup.patchValue({
           productname : resp.name,
           // productimage : resp.image_url ,
           productprice : resp.price_ex,
           productcategory : resp.category_id,
           // productshop : resp.shop_id,
-          startDate : resp.startdate,
-          endDate : resp.enddate,
+          // startDate : resp.startdate,
+          // endDate : resp.enddate,
           desc : resp.desc_
         });
       }

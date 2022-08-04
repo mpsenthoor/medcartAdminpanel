@@ -48,8 +48,12 @@
                         </div>
                     </div> -->
                 <div class="container-fluid">
-                    <button *ngIf="(formType == 'new')" mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: green;">Save Currency</button>
-                    <button *ngIf="(formType == 'edit')" mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Currency</button>
+                    <ng-container *ngIf="formType == 'edit'; else newBtn">
+                        <button mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: rgb(26, 130, 165);">Update Currency</button>
+                    </ng-container>
+                    <ng-template #newBtn>
+                        <button mat-raised-button (click)="saveCurrency()" style="float: right;color: white;background: green;">Save Currency</button>
+                    </ng-template>
                 </div>
             </form>
         </div>
