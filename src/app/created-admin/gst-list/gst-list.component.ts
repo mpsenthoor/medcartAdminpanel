@@ -76,7 +76,7 @@ export class GstListComponent implements OnInit {
     var formData = new FormData();
     formData.append("action","ListOfGst");
     this.http.connectToGstApi(formData).subscribe((resp : any) => {
-      // console.log(resp.length);
+      // console.log(resp);
       this.gstList = resp;
       // this.dataSource = resp;
       this.dataSource.data = resp;

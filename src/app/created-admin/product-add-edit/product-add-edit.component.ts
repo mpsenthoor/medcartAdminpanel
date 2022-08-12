@@ -92,6 +92,7 @@ export class ProductAddEditComponent implements OnInit {
     shop : any = GlobalComponent.shop;
 
     about : any;
+    startDateForValidation : any;
   ngOnInit(): void {
     this.common.validUser();
     // console.log(history.state);
@@ -259,7 +260,7 @@ export class ProductAddEditComponent implements OnInit {
   saveProduct(){
     this.productFormSubmitted = true;
     var formData = new FormData();
-    // console.log(this.about);
+    console.log(this.about);
     // console.log(this.productGroup.value);
     if(this.productGroup.valid){
       if(this.formType == 'edit'){
@@ -274,10 +275,10 @@ export class ProductAddEditComponent implements OnInit {
       // formData.append("shop",this.f.productshop.value);
       formData.append("shop",this.shop);
       formData.append("image",this.productImage);
-      formData.append("sdate", this.f.startDate.value != '' ? this.updateDateFormat(this.f.startDate.value) : '');
-      formData.append("edate", this.f.endDate.value != '' ? this.updateDateFormat(this.f.endDate.value) : '');
+      formData.append("sdate", this.f.startDate.value != '' && this.f.startDate.value != null ? this.updateDateFormat(this.f.startDate.value) : '');
+      formData.append("edate", this.f.endDate.value != '' && this.f.endDate.value != null ? this.updateDateFormat(this.f.endDate.value) : '');
       formData.append("desc",this.f.desc.value);
-      formData.append("about",this.about);
+      formData.append("about",this.about != undefined ? this.about : '');
 
       this.http.connectToProductApi(formData).subscribe((resp : any) => {
         // console.log(resp);

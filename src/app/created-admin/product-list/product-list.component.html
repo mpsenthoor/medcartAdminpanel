@@ -2,9 +2,51 @@
 <div class="container-fluid" style="min-height: 650px;">
     <div class="container-fluid">
         <!-- <a (click)="changeToAddEditPage('new','')" class="btn btn-primary" style="float: right;margin-bottom: 25px;">Add Product</a> -->
-        <button mat-button (click)="changeToAddEditPage('new','')" color="primary" style="float: right;">Add Product 
-            <i class="material-icons">add</i>
-        </button>
+        <div class="row top-row">
+            <div class="col-4 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <mat-label>
+                    Filter By Category
+                </mat-label>
+                <mat-select 
+                (valueChange)="getSelectedCategoryProduct($event)" 
+                placeholder="Filter by category"
+                class="form-control">
+                    <mat-option value="all">Select all</mat-option>
+                    <mat-option [value]="category.category_id" *ngFor="let category of categoryList">{{category.desc_}}</mat-option>
+                </mat-select>
+            </div>
+            <div class="col-4 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <!-- <mat-container floatPlaceholder="auto"> -->
+                    <!-- <input type="text" name="search" id="search" placeholder="Search your keyword..."
+                                    (keyup)="searchProduct($event)"> -->
+                                    <!-- <button type="submit"><i class="fas fa-search"></i></button> -->
+                <!-- <div class="widget search-widget"> -->
+                    <mat-label>
+                        Filter by product
+                    </mat-label>
+                    <input type="text" class="form-control" [(ngModel)]="productSearch" placeholder="Enter product name" (keyup)="searchProduct($event)">
+                    <ul class="list-group search-prod" *ngIf="srchProduct">
+                        <li class="list-group-item" (click)="setSearchProduct(prod.product_id)" *ngFor="let prod of srchProduct">{{ prod.name }}</li>
+                    </ul>
+                    <!-- <mat-list *ngIf="srchProduct">
+                        <mat-list-item *ngFor="let prod of srchProduct" (click)="setSearchProduct(prod.product_id)">
+                            <a matLine href="javascript:void(0)">{{ prod.name }}</a>
+                        </mat-list-item>
+                    </mat-list> -->
+                <!-- </div> -->
+                    <!-- <input matInput 
+                           type="text"
+                           placeholder="Enter product name"
+                           (keyup)="searchProduct($event)"
+                           class="form-control"> -->
+                <!-- </mat-container> -->
+            </div>
+            <div class="col-4 col-lg-4 col-md-4 col-sm-6 col-xs-6">
+                <button mat-button (click)="changeToAddEditPage('new','')" color="primary" style="float: right;">Add Product 
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
     </div>
     <!-- <button mat-raised-button (click)="changeToAddEditPage('new','')" color="primary" class="">Add Product</button> -->
 <ng-container *ngIf="dataAvail; else dataNotFound">

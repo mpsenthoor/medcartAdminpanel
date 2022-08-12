@@ -33,7 +33,9 @@
                                 <mat-label>Product Price</mat-label>
                                 <input matInput
                                     formControlName="productprice"
-                                    type="text"
+                                    type="number"
+                                    step = "0.01"
+                                    [min]="0.01"
                                     required
                                     placeholder="Enter Product Name"
                                     [ngClass]="{'is-invalid' : productFormSubmitted && f.productprice.errors}">
@@ -50,6 +52,7 @@
                                 <input matInput
                                 [matDatepicker]="picker"
                                 formControlName="startDate"
+                                [(ngModel)]="startDateForValidation"
                                 [ngClass]="{'is-invalid' : productFormSubmitted && f.startDate.errors}">
                                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -74,6 +77,8 @@
                                 <input matInput
                                 [matDatepicker]="picker1"
                                 formControlName="endDate"
+                                [min]="startDateForValidation"
+                                [disabled]="!startDateForValidation"
                                 [ngClass]="{'is-invalid' : productFormSubmitted && f.endDate.errors}">
                                 <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
                                 <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>

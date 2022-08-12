@@ -16,17 +16,17 @@ export class GlobalComponent {
     // public static shopImageLogoPath : String = "http://localhost/medcart/images/shop/logo/";
     // public static shopBackImagePath : String = "http://localhost/medcart/images/shop/backimage/";
 
-    // public static baseUrl : String = environment.baseUrl;
+    public static baseUrl : String = environment.baseUrl;
 
-    // public static imagePath : String = environment.imagePath;
-    // public static defaultImagePath : String = environment.defaultImagePath;
-    // public static productImagePath : String = environment.productImagePath;
-    // public static categoryImagePath : String = environment.categoryImagePath;
-    // public static shopImagePath : String = environment.shopImagePath;
-    // public static shopImageLogoPath : String = environment.shopImageLogoPath;
-    // public static shopBackImagePath : String = environment.shopBackImagePath;
-    // public static offerImagePath : String = environment.offerImagePath;
-    // public static customerImagePath : String = environment.customerImagePath;
+    public static imagePath : String = environment.imagePath;
+    public static defaultImagePath : String = environment.defaultImagePath;
+    public static productImagePath : String = environment.productImagePath;
+    public static categoryImagePath : String = environment.categoryImagePath;
+    public static shopImagePath : String = environment.shopImagePath;
+    public static shopImageLogoPath : String = environment.shopImageLogoPath;
+    public static shopBackImagePath : String = environment.shopBackImagePath;
+    public static offerImagePath : String = environment.offerImagePath;
+    public static customerImagePath : String = environment.customerImagePath;
 
     public static offerTypeList : any = [
       {"id":1,"name":"Percentage %"},
@@ -36,17 +36,17 @@ export class GlobalComponent {
 
     // Server URL
 
-    public static baseUrl : String = "https://geservetechnology.com/ref/medcart/api/adminApi/";
+    // public static baseUrl : String = "https://geservetechnology.com/ref/medcart/api/adminApi/";
 
-    public static imagePath : String = "https://geservetechnology.com/ref/medcart/api/images/";
-    public static defaultImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/00000000.gif";
-    public static productImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/product/";
-    public static categoryImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/category/";
-    public static shopImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/";
-    public static shopImageLogoPath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/logo/";
-    public static shopBackImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/backimage/";
-    public static offerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/offer/";
-    public static customerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/customer/";
+    // public static imagePath : String = "https://geservetechnology.com/ref/medcart/api/images/";
+    // public static defaultImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/00000000.gif";
+    // public static productImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/product/";
+    // public static categoryImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/category/";
+    // public static shopImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/";
+    // public static shopImageLogoPath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/logo/";
+    // public static shopBackImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/shop/backimage/";
+    // public static offerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/offer/";
+    // public static customerImagePath : String = "https://geservetechnology.com/ref/medcart/api/images/customer/";
 
 }
 

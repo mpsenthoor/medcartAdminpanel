@@ -11,3 +11,20 @@ table {
     color: black !important;
     font-size: large !important;
   }
+
+  .top-row{
+    padding: 15px;
+  }
+
+  .form-control{
+    background-color: cornsilk;
+    border: 1px solid black;
+    color: black;
+  }
+
+  .search-prod{
+    position: absolute;
+    width: 93%;
+    z-index: 99;
+    cursor: pointer;
+  }

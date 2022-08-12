@@ -51,6 +51,10 @@ export class ProductListComponent implements OnInit {
     private common : CommonService
     ) { }
 
+    categoryList : any;
+    srchProduct : any;
+    productSearch : any;
+    
   ngOnInit(): void {
     this.common.validUser();
     this.common.setActiveManagement("product");
@@ -67,21 +71,74 @@ export class ProductListComponent implements OnInit {
   dataAvail : Boolean = true;
 
   onLoad(){
-    var formData = new FormData();
+    this.getProductList();
+
+    this.getCategoryListForSelect();
+  }
+
+  getProductList(){
+    // this.dataSource.data = [];
+    var formData : any = new FormData();
     formData.append("action","ListOfProduct");
+    formData.append("shop",localStorage.getItem("shop"));
     this.http.connectToProductApi(formData).subscribe((resp : any) => {
       // console.log(resp);
       this.productList = resp;
       // this.dataSource = resp;
-      this.dataSource.data = resp;
+      
       if(resp.length == 0){
         this.dataAvail = false;
+      }else{
+        this.dataAvail = true;
+        this.dataSource.data = resp;
       }
       // console.log(this.dataSource);
       // console.log(this.dataSource.data);
       // const dataSource = new MatTableDataSource<PeriodicElement>(resp);
     })
   }
+  searchProduct(event : any){
+    var formData = new FormData();
+    // console.log(event.target.value);
+    if(event.target.value != ''){
+      formData.append("action","getFilteredProduct");
+      formData.append("product",event.target.value);
+      this.http.connectToProductApi(formData).subscribe((resp : any) => {
+        // console.log(resp);
+        if(resp != null){
+          this.srchProduct = resp;
+        }else{
+          this.srchProduct = '';
+        }
+      });
+    }else{
+      this.srchProduct = '';
+      this.getProductList();
+    }
+  }
+
+  setSearchProduct(product : any){
+    // console.log(product);
+    // var srcData =  <HTMLInputElement>document.getElementById("search");
+    // srcData.value = e.name;
+    var shopId = parseInt(localStorage.getItem("shop"))/693693;
+    this.srchProduct = '';
+    var formData : any = new FormData();
+    formData.append("action","getFilteredProductList");
+    formData.append("shop",shopId);
+      formData.append("product",product);
+      this.http.connectToProductApi(formData).subscribe((resp : any) => {
+        // console.log(resp);
+        if(resp != null){
+          this.dataSource.data = resp;
+          this.dataAvail = true;
+        }else{
+          this.dataAvail = false;
+        }
+        
+      });
+  }
+
   updateDataSource(index : any) {
     // this.dataSource.splice(index,1);
   }
@@ -105,6 +162,41 @@ export class ProductListComponent implements OnInit {
       }
       // console.log(resp);
     });
+  }
+
+  getSelectedCategoryProduct(categoryId : any){
+  //  console.log(event);
+  // this.dataSource.data = [];
+    if(categoryId == "all"){
+      this.getProductList();
+    }else{
+      var formData : any = new FormData();
+      formData.append("action","filterByCategoryListOfProduct");
+      formData.append("category",categoryId);
+      formData.append("shop",localStorage.getItem("shop"));
+
+      this.http.connectToProductApi(formData).subscribe((resp : any) => {
+        // console.log(resp);
+        this.dataSource.data = resp;
+        // this.productList = resp;
+        if(resp.length == 0){
+          this.dataAvail = false;
+        }else{
+          this.dataAvail = true;
+          this.dataSource.data = resp;
+        }
+      })
+    }
+
+  }
+
+  getCategoryListForSelect(){
+    var formData = new FormData();
+    formData.append("action","listOfCategoryForSelect");
+
+    this.http.connectToCategoryApi(formData).subscribe((resp : any) => {
+      this.categoryList = resp;
+    })
   }
 
   openDialog(id : any) : void{

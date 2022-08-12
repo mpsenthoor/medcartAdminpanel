@@ -54,6 +54,8 @@ export class CategoryAddEditComponent implements OnInit {
 
     deleteConfirmation : boolean;
 
+    startDateForValidation : any;
+
   ngOnInit(): void {
     this.common.validUser();
     this.common.setActiveManagement("category");
@@ -176,7 +178,7 @@ export class CategoryAddEditComponent implements OnInit {
   saveCategory(){
     this.categoryFormSubmitted = true;
     var formData = new FormData();
-    // console.log(this.categoryGroup);
+    console.log(this.categoryGroup.value);
     if(this.categoryGroup.valid){
       if(this.formType == 'edit'){
         formData.append("action","updateCategory");
@@ -189,8 +191,8 @@ export class CategoryAddEditComponent implements OnInit {
       // formData.append("category",this.f.categorycategory.value);
       formData.append("shop",this.shop);
       formData.append("image",this.categoryImage);
-      formData.append("sdate", this.f.startDate.value != '' ? this.updateDateFormat(this.f.startDate.value) : '');
-      formData.append("edate", this.f.endDate.value != '' ? this.updateDateFormat(this.f.endDate.value) : '');
+      formData.append("sdate", this.f.startDate.value != '' && this.f.startDate.value != null ? this.updateDateFormat(this.f.startDate.value) : '');
+      formData.append("edate", this.f.endDate.value != '' && this.f.endDate.value != null ? this.updateDateFormat(this.f.endDate.value) : '');
       // formData.append("desc",this.f.desc.value);
 
       this.http.connectToCategoryApi(formData).subscribe((resp : any) => {

@@ -29,7 +29,7 @@ export class GstAddEditComponent implements OnInit {
         gstamount : ['',Validators.required],
         gstdesc : [''],
         currencyId : ['',Validators.required],
-        shopId : ['',Validators.required],
+        shopId : [''],
       });
      }
 
@@ -88,8 +88,10 @@ export class GstAddEditComponent implements OnInit {
 
   saveGst(){
     this.gstFormSubmitted = true;
-    var formData = new FormData();
+    var formData : any = new FormData();
     // console.log(this.gstGroup.value);
+    var shop = localStorage.getItem("shop");
+    var shopid : any = parseInt(shop)/693693;
     if(this.gstGroup.valid){
       if(this.formType == 'edit'){
         formData.append("action","updateGst");
@@ -100,7 +102,7 @@ export class GstAddEditComponent implements OnInit {
       formData.append("amount",this.f.gstamount.value);
       formData.append("desc",this.f.gstdesc.value);
       // formData.append("shop",this.f.shopId.value);
-      formData.append("shop",this.shop);
+      formData.append("shop",shopid);
       formData.append("currency",this.f.currencyId.value);
 
       this.http.connectToGstApi(formData).subscribe((resp : any) => {
